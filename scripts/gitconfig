@@ -1,0 +1,18 @@
+# Sources:
+# https://githowto.com/aliases
+# https://git.wiki.kernel.org/index.php/Aliases
+# https://atlassianblog.wpengine.com/git/advanced-git-aliases
+# http://haacked.com/archive/2014/07/28/github-flow-aliases/
+
+[alias]
+    co = checkout
+    ci = commit
+    ca = commit -a -m
+    ba = branch -a
+    bd = branch -D
+    undo = reset --hard
+    shorty = status --short --branch
+    merc = merge --no-ff
+    grog = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
+
+
