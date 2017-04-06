@@ -4,15 +4,34 @@
 # https://atlassianblog.wpengine.com/git/advanced-git-aliases
 # http://haacked.com/archive/2014/07/28/github-flow-aliases/
 
+[core]
+    editor = nano
+    autocrlf = input
+
 [alias]
-    co = checkout
     ci = commit
-    ca = commit -a -m
-    ba = branch -a
-    bd = branch -D
-    undo = reset --hard
+    ca = commit -am # commit all with message
+
+    st = status
+
+    co = checkout
+
+    rc = rebase --continue
+    rs = rebase --skip
+
+    ba = branch -a # list local and remotes branches
+    bd = branch -D # delete local branch
+
+    last = diff HEAD^ # diff last committed change
+
+    unstage = reset HEAD
+    uncommit = reset --soft HEAD^
+
     shorty = status --short --branch
     merc = merge --no-ff
     grog = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
+
+[push]
+    default = simple
 
 

@@ -4,25 +4,28 @@ INSTALL = install -m 0755
 install: all-in-one postgres python virtualenv pycharm
 
 all-in-one:
-    $(INSTALL) scripts/all_in_one.sh $(TARGET)/run-linux-setup
+	$(INSTALL) scripts/all_in_one.sh $(TARGET)/run-linux-setup
 
 postgres:
-    $(INSTALL) scripts/postgres.sh $(TARGET)/install-postgres
+	$(INSTALL) scripts/postgres.sh $(TARGET)/install-postgres
 
 python:
-    $(INSTALL) scripts/python.sh $(TARGET)/install-python
+	$(INSTALL) scripts/python.sh $(TARGET)/install-python
 
 virtualenv:
-    $(INSTALL) scripts/virtualenv.sh $(TARGET)/install-virtualenv
+	$(INSTALL) scripts/virtualenv.sh $(TARGET)/install-virtualenv
 
 pycharm:
-    $(INSTALL) scripts/pycharm.sh $(TARGET)/install-pycharm
+	$(INSTALL) scripts/pycharm.sh $(TARGET)/install-pycharm
+
+gitconfig:
+	install -m 0644 scripts/gitconfig ~/.gitconfig
 
 clean:
-    rm -f $(TARGET)/run-linux-setup
-    rm -f $(TARGET)/install-postgres
-    rm -f $(TARGET)/install-python
-    rm -f $(TARGET)/install-virtualenv
-    rm -f $(TARGET)/install-pycharm
+	rm -f $(TARGET)/run-linux-setup
+	rm -f $(TARGET)/install-postgres
+	rm -f $(TARGET)/install-python
+	rm -f $(TARGET)/install-virtualenv
+	rm -f $(TARGET)/install-pycharm
 
 .PHONY: clean install
