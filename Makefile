@@ -1,31 +1,24 @@
-TARGET = /usr/local/bin
-INSTALL = install -m 0755
-
-install: all-in-one postgres python virtualenv pycharm
-
-all-in-one:
-	$(INSTALL) scripts/all_in_one.sh $(TARGET)/run-linux-setup
+install: postgres python virtualenv pycharm docker gitlab-runner gitconfig
 
 postgres:
-	$(INSTALL) scripts/postgres.sh $(TARGET)/install-postgres
+	bash scripts/install-postgres.sh
 
 python:
-	$(INSTALL) scripts/python.sh $(TARGET)/install-python
+	bash scripts/install-python.sh
 
 virtualenv:
-	$(INSTALL) scripts/virtualenv.sh $(TARGET)/install-virtualenv
+	bash scripts/install-virtualenv.sh
 
 pycharm:
-	$(INSTALL) scripts/pycharm.sh $(TARGET)/install-pycharm
+	bash scripts/install-pycharm.sh
+
+docker:
+	bash scripts/install-docker.sh
+
+gitlab-runner:
+	bash scripts/install-gitlab-runner.sh
 
 gitconfig:
 	install -m 0644 scripts/gitconfig ~/.gitconfig
 
-clean:
-	rm -f $(TARGET)/run-linux-setup
-	rm -f $(TARGET)/install-postgres
-	rm -f $(TARGET)/install-python
-	rm -f $(TARGET)/install-virtualenv
-	rm -f $(TARGET)/install-pycharm
-
-.PHONY: clean install
+.PHONY: install
